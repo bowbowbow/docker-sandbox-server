@@ -1,0 +1,11 @@
+# WebStorm
+.idea/
+
+# Log
+*.log
+/logs/*
+
+# Modules
+/node_modules/
+package-lock.json
+
