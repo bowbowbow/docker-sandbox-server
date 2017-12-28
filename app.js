@@ -1,18 +1,18 @@
 // Common Modules...
-const Express = require('express');
-const http = require('http');
+const app = require('express')();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 const domain = require('domain').create();
-
-// express setting
-const app = Express();
-require('./express')(app);
 
 process.env.TZ = 'Asia/Seoul';
 
-const httpServer = http.createServer(app);
+const Socket = require('./Socket');
+
+server.listen(8080);
+
 domain.on('error', (err) => {
   console.log('unhandled error : ' + err);
 });
 domain.run(() => {
-  httpServer.listen(8080);
+  Socket.init(io);
 });
