@@ -6,7 +6,7 @@ const domain = require('domain').create();
 
 process.env.TZ = 'Asia/Seoul';
 
-const Socket = require('./Socket');
+const Socket = require('./libs/Socket');
 
 server.listen(8080);
 
