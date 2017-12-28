@@ -29,6 +29,7 @@ const Logger = new winston.Logger({
     }),
     new winston.transports.File({
       name: 'debug-file',
+      maxsize: 1000000,
       level: 'debug',
       json: false,
       filename: debugLogPath,
@@ -40,6 +41,7 @@ const Logger = new winston.Logger({
     }),
     new winston.transports.File({
       name: 'error-file',
+      maxsize: 1000000,
       level: 'error',
       json: false,
       filename: errorLogPath,
