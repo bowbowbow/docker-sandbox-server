@@ -7,11 +7,12 @@ const domain = require('domain').create();
 process.env.TZ = 'Asia/Seoul';
 
 const Socket = require('./libs/Socket');
+const Log = require('./Logger');
 
 server.listen(8080);
 
 domain.on('error', (err) => {
-  console.log('unhandled error : ' + err);
+  Log.error('unhandled error : ', err);
 });
 domain.run(() => {
   Socket.init(io);

@@ -1,5 +1,6 @@
 const queue = require('./Queue');
 const Job = require('./Job').default;
+const Log = require('./Logger');
 
 class Socket {
   constructor() {
@@ -10,11 +11,11 @@ class Socket {
     this.io.on('connection', (socket) => {
       try {
         socket.on('run', (data) => {
-          console.log(data);
+          Log.notice(data);
           this.runHandler(data, socket);
         });
       } catch (err) {
-        console.error(err);
+        Log.error(err);
       }
     });
   }
@@ -28,7 +29,7 @@ class Socket {
     try {
       this.io.sockets.connected(socketId).emit("topic", data);
     } catch (err) {
-      console.error(err);
+      Log.error(err);
     }
   }
 }

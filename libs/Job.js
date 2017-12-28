@@ -1,5 +1,7 @@
 const _ = require('lodash');
 
+const Log = require('./Logger');
+
 class Job {
   constructor(data) {
     this._data = _.defaults(data, {
